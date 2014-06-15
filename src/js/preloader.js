@@ -14,6 +14,7 @@
 
       this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
       this.load.setPreloadSprite(this.asset);
+      this.load.image('hawk', 'assets/hawk.png');
       this.load.image('player', 'assets/bird.png');
       this.load.image('ground', 'assets/grass.png');
       this.load.image('clouds', 'assets/clouds.png');

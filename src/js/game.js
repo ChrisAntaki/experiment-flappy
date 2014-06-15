@@ -28,9 +28,38 @@
       this.player.body.bounce.y = 0.2;
       this.player.body.gravity.y = 300;
       this.player.body.collideWorldBounds = true;
+      this.player.body.immovable = true;
+
+      // Create hawks.
+      this.hawks = [];
+      this.hawkGenerator = this.game.time.events.loop(Phaser.Timer.SECOND * 5, this.createHawk, this);
+      this.hawkGenerator.timer.start();
+      this.createHawk();
+
+      window.x = this;
 
       // Input.
       this.input.onDown.add(this.onDown, this);
+    },
+
+    createHawk: function() {
+      var y = 100 + Math.random() * 100;
+      var hawk = this.add.sprite(640, y, 'hawk');
+      this.physics.arcade.enable(hawk);
+      hawk.body.velocity.x -= 200;
+      this.hawks.push(hawk);
+    },
+
+    removeHawks: function() {
+      for (var i = this.hawks.length - 1; i >= 0; i--) {
+        var hawk = this.hawks[i];
+        var collision = this.physics.arcade.collide(this.player, hawk);
+        if (!collision && hawk.body.x > -100) {
+          return;
+        }
+        hawk.destroy();
+        this.hawks.splice(i, 1);
+      };
     },
 
     update: function () {
@@ -39,6 +68,8 @@
       if (!this.expired) {
         this.expired = true;
       }
+
+      this.removeHawks();
 
       x = this.input.position.x;
       y = this.input.position.y;
