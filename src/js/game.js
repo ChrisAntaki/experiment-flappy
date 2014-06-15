@@ -36,8 +36,6 @@
       this.hawkGenerator.timer.start();
       this.createHawk();
 
-      window.x = this;
-
       // Input.
       this.input.onDown.add(this.onDown, this);
     },
@@ -59,7 +57,7 @@
         }
         hawk.destroy();
         this.hawks.splice(i, 1);
-      };
+      }
     },
 
     update: function () {
