@@ -3,8 +3,7 @@ Experiment: Flappy
 
 This HTML5 game is built with Phaser.
 
-### Installation
-
+#### Installation
 ```bash
 bower install
 npm install
