@@ -17,7 +17,7 @@
       this.load.image('hawk', 'assets/hawk.png');
       this.load.image('player', 'assets/bird.png');
       this.load.image('ground', 'assets/grass.png');
-      this.load.image('clouds', 'assets/clouds.png');
+      this.load.image('clouds', 'assets/clouds-dark.png');
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
     },
 
