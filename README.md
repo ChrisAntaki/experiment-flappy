@@ -1,6 +1,13 @@
 Experiment: Flappy
 =================
 
-This project is an attempt to use Phaser.js to build a simple HTML5 game. The gameplay is inspired by Flappy Bird.
+This HTML5 game is built with Phaser.
 
-Demo available here &raquo; [http://chrisantaki.github.io/experiment-flappy/](http://chrisantaki.github.io/experiment-flappy/)
+### Installation
+
+```bash
+bower install
+npm install
+npm install -g gulp
+gulp
+```
