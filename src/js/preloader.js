@@ -15,7 +15,7 @@
       this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
       this.load.setPreloadSprite(this.asset);
       this.load.image('hawk', 'assets/hawk.png');
-      this.load.image('player', 'assets/bird.png');
+      this.load.spritesheet('player', 'assets/bird-sprite.png', 40, 40);
       this.load.image('ground', 'assets/grass.png');
       this.load.image('clouds', 'assets/clouds-dark.png');
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');

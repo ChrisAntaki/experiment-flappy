@@ -26,6 +26,7 @@
       // Create player.
       this.player = this.add.sprite(320, 0, 'player');
       this.player.anchor.setTo(0.5, 0.5);
+      this.player.animations.add('flap', [0, 1, 2, 3], 10, true);
 
       // Add physics.
       this.physics.arcade.enable(this.player);
@@ -108,6 +109,7 @@
         return;
       }
       this.player.body.velocity.y = -200;
+      this.player.animations.play('flap', null, false);
       this.lastClick = thisClick;
     }
 
