@@ -13,10 +13,14 @@
       // Background.
       this.background = this.add.sprite(0, 0, 'clouds');
 
+      // Add score.
+      this.score = 0;
+      this.updateScoreText(this.score);
+
       // Platforms.
       this.platforms = this.add.group();
       this.platforms.enableBody = true;
-      var ground = this.platforms.create(0, this.world.height - 40, 'ground');
+      var ground = this.platforms.create(0, this.world.height - 5, 'ground');
       ground.body.immovable = true;
 
       // Create player.
@@ -32,12 +36,24 @@
 
       // Create hawks.
       this.hawks = [];
-      this.hawkGenerator = this.game.time.events.loop(Phaser.Timer.SECOND * 5, this.createHawk, this);
+      this.hawkGenerator = this.game.time.events.loop(Phaser.Timer.SECOND * 4, this.createHawk, this);
       this.hawkGenerator.timer.start();
       this.createHawk();
 
       // Input.
       this.input.onDown.add(this.onDown, this);
+    },
+
+    updateScoreText: function(score) {
+      var x = 10
+        , y = 10;
+
+      if (this.titleTxt) {
+        this.titleTxt.destroy();
+      }
+
+      this.titleTxt = this.add.bitmapText(x, y, 'minecraftia', 'Score: ' + score );
+      this.titleTxt.align = 'center';
     },
 
     createHawk: function() {
@@ -55,6 +71,13 @@
         if (!collision && hawk.body.x > -100) {
           return;
         }
+
+        // Update score, on collision.
+        if (collision) {
+          this.score++;
+          this.updateScoreText(this.score);
+        }
+
         hawk.destroy();
         this.hawks.splice(i, 1);
       }
