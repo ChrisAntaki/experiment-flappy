@@ -68,11 +68,12 @@
       for (var i = this.hawks.length - 1; i >= 0; i--) {
         var hawk = this.hawks[i];
         var collision = this.physics.arcade.collide(this.player, hawk);
-        if (!collision && hawk.body.x > -100) {
+
+        if (!collision && hawk.inCamera) {
           return;
         }
 
-        // Update score, on collision.
+        // Keep score updated.
         if (collision) {
           this.score++;
           this.updateScoreText(this.score);
