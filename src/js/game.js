@@ -32,7 +32,6 @@
       this.player.body.bounce.y = 0.2;
       this.player.body.gravity.y = 300;
       this.player.body.collideWorldBounds = true;
-      this.player.body.immovable = true;
 
       // Create hawks.
       this.hawks = [];
@@ -66,15 +65,17 @@
 
     removeHawks: function() {
       for (var i = this.hawks.length - 1; i >= 0; i--) {
-        var hawk = this.hawks[i];
-        var collision = this.physics.arcade.collide(this.player, hawk);
+        var hawk, overlap;
+        
+        hawk = this.hawks[i];
+        overlap = this.physics.arcade.overlap(this.player, hawk);
 
-        if (!collision && hawk.inCamera) {
+        if (!overlap && hawk.inCamera) {
           return;
         }
 
         // Keep score updated.
-        if (collision) {
+        if (overlap) {
           this.score++;
           this.updateScoreText(this.score);
         }
